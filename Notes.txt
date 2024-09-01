@@ -1,0 +1,61 @@
+Fix nVidia
+sudo chmod +x /usr/share/screen-resolution-extra/nvidia-polkit
+
+Fix slow Steam
+steam steam://open/console
+@nClientDownloadEnableHTTP2PlatformLinux 0
+
+https://www.reddit.com/r/linux_gaming/comments/16e1l4h/slow_steam_downloads_try_this/
+
+backup Veeam
+veeamconfig job start --name "LinuxMint1"
+
+Block Wifi and Bluetooth
+https://www.baeldung.com/linux/disable-wireless-network
+
+Switch monitors
+https://www.dell.com/community/en/conversations/linux-general/dell-display-manager-keyboard-shortcuts-for-kvm-switch-on-linux-ubuntu-for-u3821dw-monitor/6698ead384a7860c8e48bca0
+
+ddcutil setvcp 60 0x1b
+
+   Feature: 60 (Input Source)
+      Values:
+         1b: Unrecognized value
+         0f: DisplayPort-1
+         11: HDMI-1
+
+Don´t forget to mount Seagate before running Veeam! -done permanently
+
+lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,UUID,PTUUID,PARTUUID,LABEL
+[warn] Cannot find EFI boot manager entry for EFI System Partition GUID [9a9a26fb-f85a-42e3-805f-c570688a9501]
+
+Locate mount point for SMB shares:
+ls -l /run/user/$UID/gvfs
+
+Automount SMB share:
+https://forums.linuxmint.com/viewtopic.php?t=366831
+
+Use journalctl:
+https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs
+
+Use LDAP:
+https://www.baeldung.com/linux/ldap-active-directory-alternative
+
+Disable USB autosuspend (change GRUB_CMDLINE_LINUX_DEFAULT):
+https://forums.linuxmint.com/viewtopic.php?t=343069
+
+modprobe changes this file: /sys/module/usbcore/parameters/autosuspend
+
+Permissions
+-----------
+4 if read permission is desired
+2 if write permission is desired
+1 if execute permission is desired
+7 means read/write/execute, 6 means read/write, and 5 means read/execute
+https://www.cyberciti.biz/faq/get-octal-file-permissions-from-command-line-on-linuxunix/
+
+stat -c '%a' testfile.txt
+sudo chown jmarc:adm testfile.txt (changes owner user AND group)
+sudo chgrp bin testfile.txt (changes group)
+
+
